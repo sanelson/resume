@@ -5,7 +5,8 @@
 % License : MIT
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+%\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -18,6 +19,9 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{xparse}
+\usepackage{ulem}
+\usepackage{xstring}
 \input{glyphtounicode}
 
 
@@ -62,6 +66,18 @@
 
 %-------------------------
 % Custom commands
+
+% Support environment variables for customization
+% see: https://tex.stackexchange.com/questions/62010
+\ExplSyntaxOn
+\NewDocumentCommand{\getenv}{om}
+ {
+  \sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 } { } \l_tmpa_tl
+  \tl_trim_spaces:N \l_tmpa_tl
+  \IfNoValueTF { #1 } { \tl_use:N \l_tmpa_tl } { \tl_set_eq:NN #1 \l_tmpa_tl }
+ }
+\ExplSyntaxOff
+
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1 \vspace{-2pt}}
@@ -111,11 +127,14 @@
 %   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
 % \end{tabular*}
 
+%-----------CONTACT INFO--------
+\getenv[\MYPHONE]{MYPHONE}
+\getenv[\MYEMAIL]{MYEMAIL}
 \begin{center}
-    \textbf{\Huge \scshape Jake Ryan} \\ \vspace{1pt}
-    \small 123-456-7890 $|$ \href{mailto:x@x.com}{\underline{jake@su.edu}} $|$ 
-    \href{https://linkedin.com/in/...}{\underline{linkedin.com/in/jake}} $|$
-    \href{https://github.com/...}{\underline{github.com/jake}}
+    \textbf{\Huge \scshape Sam Nelson} \\ \vspace{1pt}
+    \small \MYPHONE \vspace{1pt} $|$ \href{mailto:\MYEMAIL}{\uline{\MYEMAIL}} $|$ 
+    \href{https://linkedin.com/in/nelson-sam}{\uline{linkedin.com/in/nelson-sam}} $|$
+    \href{https://github.com/sanelson}{\uline{github.com/sanelson}}
 \end{center}
 
 
@@ -123,11 +142,8 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Southwestern University}{Georgetown, TX}
-      {Bachelor of Arts in Computer Science, Minor in Business}{Aug. 2018 -- May 2021}
-    \resumeSubheading
-      {Blinn College}{Bryan, TX}
-      {Associate's in Liberal Arts}{Aug. 2014 -- May 2018}
+      {Boise State University}{Boise, Idaho}
+      {Bachelor of Arts in Mechanical Engineering, Minor in Math}{Aug. 1997 -- May 2007}
   \resumeSubHeadingListEnd
 
 
@@ -136,43 +152,50 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Undergraduate Research Assistant}{June 2020 -- Present}
-      {Texas A\&M University}{College Station, TX}
+      {IT Consultant}{March 2018 -- present}
+      {Siliconfuture LLC}{Boise, ID}
       \resumeItemListStart
-        \resumeItem{Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems}
-        \resumeItem{Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data}
-        \resumeItem{Explored ways to visualize GitHub collaboration in a classroom setting}
+        \resumeItem{Develop custom software solutions and provide training/coaching}
+        \resumeItem{Reverse engineer, bugfix and document legacy systems}
+        \resumeItem{Collaborate with clients to architect, develop and implement new systems}
       \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
 
     \resumeSubheading
-      {Information Technology Support Specialist}{Sep. 2018 -- Present}
-      {Southwestern University}{Georgetown, TX}
+      {DevOps Engineer}{May 2024 -- Jan 2025}
+      {Treasury4}{Spokane, WA}
       \resumeItemListStart
-        \resumeItem{Communicate with managers to set up campus computers used on campus}
-        \resumeItem{Assess and troubleshoot computer problems brought by students, faculty and staff}
-        \resumeItem{Maintain upkeep of computers, classroom equipment, and 200 printers across campus}
-    \resumeItemListEnd
+        \resumeItem{Automated the deployment of Snowflake data warehouse schemas and config using Azure DevOps Pipelines}
+        \resumeItem{Built and maintained Kubernetes (AKS) clusters with ArgoCD, kubectl and k9s}
+        \resumeItem{Led the migration from Terraform to Opentofu and implemented remote state encryption}
+        \resumeItem{Developed a custom Powershell Azure DevOps Pipeline YAML linter to catch errors before committing}
+        \resumeItem{Created a Go program to activate Azure PIM for multiple resources concurrently}
+      \resumeItemListEnd
 
     \resumeSubheading
-      {Artificial Intelligence Research Assistant}{May 2019 -- July 2019}
-      {Southwestern University}{Georgetown, TX}
+      {Software Engineer}{September 2022 -- May 2024}
+      {Clenera LLC}{Boise, ID}
       \resumeItemListStart
-        \resumeItem{Explored methods to generate video game dungeons based off of \emph{The Legend of Zelda}}
-        \resumeItem{Developed a game in Java to test the generated dungeons}
-        \resumeItem{Contributed 50K+ lines of code to an established codebase via Git}
-        \resumeItem{Conducted  a human subject study to determine which video game dungeon generation technique is enjoyable}
-        \resumeItem{Wrote an 8-page paper and gave multiple presentations on-campus}
-        \resumeItem{Presented virtually to the World Conference on Computational Intelligence}
+        \resumeItem{Built custom data pipelines using Django, Python, Quickbase and Office 365}
+        \resumeItem{Automated investor reports from engineering data using custom LaTeX templates, Plotly, Pandas and Matplotlib}
+        \resumeItem{Created office TV dashboards using Grafana and Postgres}
+        \resumeItem{Containerized and migrated applications to Azure using Docker and Terraform}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Infrastructure Engineer}{April 2018 -- April 2019}
+      {J.R. Simplot Company}{Boise, ID}
+      \resumeItemListStart
+        \resumeItem{Designed, built and maintained an Azure hosted multi-node Splunk Enterprise cluster used for SEIM}
+        \resumeItem{Trained and coached teams on Git source control best practices and basic Python scripting}
+        \resumeItem{Configured RHEL and CentOS using Ansible}
+        \resumeItem{Created virtual machine image build tooling using Vagrant}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {System Administrator}{March 2014 -- March 2018}
+      {Kount}{Boise, ID}
+      \resumeItemListStart
+        \resumeItem{Built, supported and deployed AI credit card fraud detection app in a high availability, high performance, PCI compliant, SaaS environment}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -182,37 +205,24 @@
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
+          {\textbf{\href{https://github.com/sanelson/schemachange}{\uline{Schemachange}}} $|$ \emph{Python}}{Sept 2024 -- Present}
           \resumeItemListStart
-            \resumeItem{Developed a full-stack web application using with Flask serving a REST API with React as the frontend}
-            \resumeItem{Implemented GitHub OAuth to get data from user’s repositories}
-            \resumeItem{Visualized GitHub data to show collaboration}
-            \resumeItem{Used Celery and Redis for asynchronous tasks}
+            \resumeItem{Added support for Snowflake SQL object dependency resolution using directed graphs via the NetworkX and SQLGlot Python libraries}
+            \resumeItem{Added schema 'baseline' feature to migrate existing databases to Schemachange}
+            \resumeItem{Collaborating with the Schemachange community to add new features and fix bugs}
+            \resumeItem{Created a Schemachange plugin system per Schemachange community pull request feedback}
           \resumeItemListEnd
       \resumeProjectHeading
-          {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{May 2018 -- May 2020}
+          {\textbf{\href{https://github.com/FreeCAD/homebrew-freecad}{\uline{homebrew-freecad}}} $|$ \emph{Ruby, CMake, Homebrew}}{Nov 2014 -- 2016}
           \resumeItemListStart
-            \resumeItem{Developed a Minecraft server plugin to entertain kids during free time for a previous job}
-            \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
-            \resumeItem{Implemented continuous delivery using TravisCI to build the plugin upon new a release}
-            \resumeItem{Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin}
+            \resumeItem{Created and maintained the Homebrew formula for FreeCAD until transferring to the FreeCAD organization}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
-
-
 %
 %-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
-     \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
-     \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
-     \textbf{Libraries}{: pandas, NumPy, Matplotlib}
-    }}
- \end{itemize}
-
+% see: https://leo3418.github.io/2024/06/21/latex-file-cmdline-build-options.html
+\IfBeginWith*{\jobname}{resume}{\input{skills.tex}}{\input{\jobname_skills.tex}}
 
 %-------------------------------------------
 \end{document}
