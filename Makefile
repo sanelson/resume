@@ -4,7 +4,7 @@ ENVFILE = .env
 # eg: make JOB=meta
 JOB ?= resume
 
-all: resume.pdf
+all: pdf
 
 pdf: resume.tex $(ENVFILE) $(SKILLS)
 	docker run -i --rm --name latex \
