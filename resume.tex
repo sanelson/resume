@@ -148,58 +148,8 @@
 
 
 %-----------EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {IT Consultant}{March 2018 -- present}
-      {Siliconfuture LLC}{Boise, ID}
-      \resumeItemListStart
-        \resumeItem{Develop custom software solutions and provide training/coaching}
-        \resumeItem{Reverse engineer, bugfix and document legacy systems}
-        \resumeItem{Collaborate with clients to architect, develop and implement new systems}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {DevOps Engineer}{May 2024 -- Jan 2025}
-      {Treasury4}{Spokane, WA}
-      \resumeItemListStart
-        \resumeItem{Automated the deployment of Snowflake data warehouse schemas and config using Azure DevOps Pipelines}
-        \resumeItem{Built and maintained Kubernetes (AKS) clusters with ArgoCD, kubectl and k9s}
-        \resumeItem{Led the migration from Terraform to Opentofu and implemented remote state encryption}
-        \resumeItem{Developed a custom Powershell Azure DevOps Pipeline YAML linter to catch errors before committing}
-        \resumeItem{Created a Go program to activate Azure PIM for multiple resources concurrently}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Software Engineer}{September 2022 -- May 2024}
-      {Clenera LLC}{Boise, ID}
-      \resumeItemListStart
-        \resumeItem{Built custom data pipelines using Django, Python, Quickbase and Office 365}
-        \resumeItem{Automated investor reports from engineering data using custom LaTeX templates, Plotly, Pandas and Matplotlib}
-        \resumeItem{Created office TV dashboards using Grafana and Postgres}
-        \resumeItem{Containerized and migrated applications to Azure using Docker and Terraform}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Infrastructure Engineer}{April 2018 -- April 2019}
-      {J.R. Simplot Company}{Boise, ID}
-      \resumeItemListStart
-        \resumeItem{Designed, built and maintained an Azure hosted multi-node Splunk Enterprise cluster used for SEIM}
-        \resumeItem{Trained and coached teams on Git source control best practices and basic Python scripting}
-        \resumeItem{Configured RHEL and CentOS using Ansible}
-        \resumeItem{Created virtual machine image build tooling using Vagrant}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {System Administrator}{March 2014 -- March 2018}
-      {Kount}{Boise, ID}
-      \resumeItemListStart
-        \resumeItem{Built, supported and deployed AI credit card fraud detection app in a high availability, high performance, PCI compliant, SaaS environment}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
+\input{full_experience.tex}
+%\input{recent_experience.tex}
 
 %-----------PROJECTS-----------
 \section{Projects}
@@ -211,6 +161,15 @@
             \resumeItem{Added schema 'baseline' feature to migrate existing databases to Schemachange}
             \resumeItem{Collaborating with the Schemachange community to add new features and fix bugs}
             \resumeItem{Created a Schemachange plugin system per Schemachange community pull request feedback}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/sanelson/PHYS205/blob/master/observing_project/poster.pdf}{\uline{Eclipsing Binary RZ Cassiopeiae: Generating a light curve with
+a DSLR camera}}}}{Spring 2020}
+      \resumeProjectHeading{Boise State University - PHYS205: Stellar Astronomy $|$ \emph{Python, Jupyter Notebooks, LaTeX}}{}
+          \resumeItemListStart
+            \resumeItem{Used a consumer DSLR to image the eclipsing binary star RZ Cassiopeiae during the primary eclipse phase}
+            \resumeItem{Used Python and Jupyter Notebooks to process the images and generate a light curve}
+            \resumeItem{Used LaTeX and Beamer to create a \href{https://github.com/sanelson/PHYS205/blob/master/observing_project/poster.pdf}{\uline{research poster}} for the project}
           \resumeItemListEnd
       \resumeProjectHeading
           {\textbf{\href{https://github.com/FreeCAD/homebrew-freecad}{\uline{homebrew-freecad}}} $|$ \emph{Ruby, CMake, Homebrew}}{Nov 2014 -- 2016}
