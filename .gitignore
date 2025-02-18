@@ -1,1 +1,4 @@
 .env
+.vscode/
+*.fls
+*.fdb_latexmk
